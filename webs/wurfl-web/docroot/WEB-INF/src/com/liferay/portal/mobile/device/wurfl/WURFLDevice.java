@@ -80,6 +80,22 @@ public class WURFLDevice extends AbstractDevice {
 	}
 
 	@Override
+	public Dimensions getDisplaySize() {
+		Capability heightCapability = _capabilities.get(
+			WURFLConstants.DISPLAY_HEIGHT);
+		Capability widthCapability = _capabilities.get(
+			WURFLConstants.DISPLAY_WIDTH);
+
+		if ((heightCapability == null) || (widthCapability == null)) {
+			return Dimensions.UNKNOWN;
+		}
+
+		int height = GetterUtil.getInteger(heightCapability.getValue());
+		int width = GetterUtil.getInteger(widthCapability.getValue());
+
+		return new Dimensions(height, width);
+	}
+
 	public String getModel() {
 		return getValue(WURFLConstants.MODEL_NAME);
 	}
@@ -99,8 +115,7 @@ public class WURFLDevice extends AbstractDevice {
 		return getValue(WURFLConstants.POINTING_METHOD);
 	}
 
-	@Override
-	public Dimensions getScreenSize() {
+	public Dimensions getResolution() {
 		Capability heightCapability = _capabilities.get(
 			WURFLConstants.RESOLUTION_HEIGHT);
 		Capability widthCapability = _capabilities.get(
@@ -110,10 +125,19 @@ public class WURFLDevice extends AbstractDevice {
 			return Dimensions.UNKNOWN;
 		}
 
-		float height = GetterUtil.getFloat(heightCapability.getValue());
-		float width = GetterUtil.getFloat(widthCapability.getValue());
+		int height = GetterUtil.getInteger(heightCapability.getValue());
+		int width = GetterUtil.getInteger(widthCapability.getValue());
 
 		return new Dimensions(height, width);
+	}
+
+	/**
+	 * @deprecated As of 6.2.0 please use {@link #getResolution()} instead
+	 */
+	@Deprecated
+	@Override
+	public Dimensions getScreenSize() {
+		return getResolution();
 	}
 
 	@Override
