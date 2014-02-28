@@ -258,15 +258,10 @@ public class ElasticsearchIndexSearcher extends BaseIndexSearcher {
 
 				SortOrder order = SortOrder.ASC;
 
-// The following logic is in the Solr plugin but it seams wrong !!!
-// why not sort by the tokenized field if a non-tokenized is not available ?!?
-				
-//				if (Validator.isNull(sortFieldName) || !sortFieldName.endsWith("sortable")) {
-//
-//					sortFieldName = "_score";
-//
-//					order = SortOrder.DESC;
-//				}
+				if (Validator.isNull(sortFieldName)) {
+					sortFieldName = "_score";
+					order = SortOrder.DESC;
+				}
 
 				if (sort.isReverse()) {
 					order = SortOrder.DESC;
