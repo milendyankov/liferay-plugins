@@ -24,6 +24,7 @@
 	</bean>
 	<bean id="com.liferay.portal.search.elasticsearch.ElasticsearchIndexWriter" class="com.liferay.portal.search.elasticsearch.ElasticsearchIndexWriter">
 		<property name="client" ref="com.liferay.portal.search.elasticsearch.ElasticsearchNodeClient" />
+		<property name="spellCheckIndexWriter" ref="com.liferay.portal.search.elasticsearch.ElasticsearchSpellCheckIndexWriter" />
 	</bean>
 
 	<bean id="com.liferay.portal.search.Elasticsearch.ElasticsearchSearchEngineImpl" class="com.liferay.portal.kernel.search.BaseSearchEngine">
@@ -32,6 +33,11 @@
 		<property name="indexWriter" ref="com.liferay.portal.search.elasticsearch.ElasticsearchIndexWriter" />
 		<property name="luceneBased" value="true" />
 		<property name="vendor" value="Elasticsearch" />
+	</bean>
+	
+	<bean id="com.liferay.portal.search.elasticsearch.ElasticsearchSpellCheckIndexWriter" class="com.liferay.portal.search.elasticsearch.ElasticsearchSpellCheckIndexWriter">
+		<property name="indexWriter" ref="com.liferay.portal.search.elasticsearch.ElasticsearchIndexWriter" />
+		<property name="elasticsearchClient" ref="com.liferay.portal.search.elasticsearch.ElasticsearchNodeClient" />
 	</bean>
 
 	<!-- Configurator -->
