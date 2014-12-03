@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+
+<project name="simple-sb-api" basedir="." default="compile">
+
+	<property name="plugin.version" value="1" />
+
+	<import file="../../../build-common-osgi-plugin.xml" />
+
+	<property name="plugin.name" value="com.liferay.osgi.demo.service" />
+
+	<property name="auto.deploy.dir" value="${liferay.home}/osgi/modules" />
+
+	<property name="import.shared" value="osgi-demo-api" />
+	<property name="osgi.ide.dependencies" value="spring-context.jar" />
+
+	<property name="service.base.dir" value="." />
+	<property name="service.input.file" value="service.xml" />
+
+	<target name="build-service">
+		<build-service 
+			service.api.dir="../osgi-demo-api/src" 
+			service.auto.namespace.tables="false" 
+			service.hbm.file.name="module-hbm.xml" 
+			service.spring.file.name="module-spring.xml" 
+			service.sql.dir="src/META-INF/sql" 
+			service.test.dir="../osgi-demo-test/test/integration" />
+	</target>
+
+</project>
+

@@ -1,0 +1,1 @@
+create index IX_810857C on demo_Foo (field2);

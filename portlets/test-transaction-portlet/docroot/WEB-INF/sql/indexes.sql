@@ -1,1 +1,0 @@
-create index IX_AEFF307C on TestTransaction_Bar (text_);

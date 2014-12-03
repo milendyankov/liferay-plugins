@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:osgi="http://www.springframework.org/schema/osgi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/osgi http://www.springframework.org/schema/osgi/spring-osgi.xsd">
+	<bean id="com.liferay.osgi.demo.service.OSGi_FooLocalService" class="com.liferay.osgi.demo.service.impl.OSGi_FooLocalServiceImpl" />
+	<osgi:service interface="com.liferay.osgi.demo.service.OSGi_FooLocalService" ref="com.liferay.osgi.demo.service.OSGi_FooLocalService">
+		<osgi:service-properties>
+			<entry key="json.web.service.context.name" value="demo" />
+			<entry key="json.web.service.context.path" value="OSGi_Foo" />
+		</osgi:service-properties>
+	</osgi:service>
+	<bean id="com.liferay.osgi.demo.service.OSGi_FooService" class="com.liferay.osgi.demo.service.impl.OSGi_FooServiceImpl" />
+	<osgi:service interface="com.liferay.osgi.demo.service.OSGi_FooService" ref="com.liferay.osgi.demo.service.OSGi_FooService">
+		<osgi:service-properties>
+			<entry key="json.web.service.context.name" value="demo" />
+			<entry key="json.web.service.context.path" value="OSGi_Foo" />
+		</osgi:service-properties>
+	</osgi:service>
+	<bean id="com.liferay.osgi.demo.service.persistence.OSGi_FooPersistence" class="com.liferay.osgi.demo.service.persistence.impl.OSGi_FooPersistenceImpl" parent="basePersistence" />
+	<osgi:service ref="com.liferay.osgi.demo.service.persistence.OSGi_FooPersistence" interface="com.liferay.osgi.demo.service.persistence.OSGi_FooPersistence" />
+</beans>

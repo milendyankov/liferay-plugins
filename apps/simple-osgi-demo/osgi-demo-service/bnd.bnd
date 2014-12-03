@@ -1,0 +1,10 @@
+Bundle-Name: OSGi Demo Service
+Bundle-SymbolicName: com.liferay.osgi.demo.service
+Bundle-Version: 1.0.0
+Include-Resource: classes
+Liferay-Service: true
+Require-Capability:\
+        liferay.extender;\
+        filter:="(&(liferay.extender=spring.extender)(version=1.0))"
+Spring-Context: META-INF/*-spring.xml
+

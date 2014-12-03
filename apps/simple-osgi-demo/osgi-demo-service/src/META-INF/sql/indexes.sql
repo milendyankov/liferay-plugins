@@ -1,0 +1,1 @@
+create index IX_A55BF03F on OSGi_Foo (field2);
