@@ -1,4 +1,4 @@
-package com.liferay.osgi.demo.portlet;
+package com.liferay.osgi.demo.maven.portlet;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -22,19 +22,19 @@ import com.liferay.osgi.demo.service.OSGi_FooLocalServiceUtil;
 @Component(
 		immediate = true, 
 		property = {
-			"com.liferay.portlet.css-class-wrapper=portlet-osgi-demo",
+			"com.liferay.portlet.css-class-wrapper=portlet-osgi-demo-maven",
 			"com.liferay.portlet.display-category=category.sample",
 			"com.liferay.portlet.instanceable=true",
 			"com.liferay.portlet.preferences-owned-by-group=true",
 			"com.liferay.portlet.private-request-attributes=false",
 			"com.liferay.portlet.private-session-attributes=false",
 			"com.liferay.portlet.render-weight=50",
-			"javax.portlet.display-name=OSGI demo portlet",
+			"javax.portlet.display-name=OSGI maven demo portlet",
 			"javax.portlet.expiration-cache=0",
 			"javax.portlet.security-role-ref=power-user,user" }, 
 		service = Portlet.class)
 
-public class OSGiDemoPortlet extends GenericPortlet {
+public class OSGiMavenDemoPortlet extends GenericPortlet {
 
 	private OSGi_FooLocalService service;
 
